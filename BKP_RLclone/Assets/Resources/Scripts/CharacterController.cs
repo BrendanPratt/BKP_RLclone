@@ -2,14 +2,15 @@
 
 public class CharacterController : MonoBehaviour
 {
-    public Rigidbody Rigidbody;
-    
+    public Rigidbody rb;
+
     public float Speed = 5;
     private float VerticalSpeed;
 
     public void MoveForward()
     {
         transform.Translate(transform.forward * Time.deltaTime * Speed);
+        rb.AddForce(Speed, 0, 0, ForceMode.Acceleration);
     }
 
     public void MoveBackward()
@@ -40,11 +41,12 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         // countering gravity
-        Rigidbody.AddForce(transform.up * Physics.gravity.magnitude);
+        rb.AddForce(transform.up * Physics.gravity.magnitude);
+        
 
         // setting vertical speed
-        Rigidbody.AddForce(transform.up * VerticalSpeed);
-        
+        rb.AddForce(transform.up * VerticalSpeed);
+
         VerticalSpeed = 0;
 
     }
