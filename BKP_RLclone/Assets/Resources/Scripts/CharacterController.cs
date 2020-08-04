@@ -2,7 +2,10 @@
 
 public class CharacterController : MonoBehaviour
 {
+    public Rigidbody Rigidbody;
+    
     public float Speed = 5;
+    private float VerticalSpeed;
 
     public void MoveForward()
     {
@@ -26,12 +29,24 @@ public class CharacterController : MonoBehaviour
 
     public void MoveUp()
     {
-        transform.Translate(transform.up * Time.deltaTime * Speed);
+        VerticalSpeed += Time.deltaTime * Speed;
     }
 
     public void MoveDown()
     {
-        transform.Translate(-transform.up * Time.deltaTime * Speed);
+        VerticalSpeed -= Time.deltaTime * Speed;
     }
 
+    private void FixedUpdate()
+    {
+        // countering gravity
+        Rigidbody.AddForce(transform.up * Physics.gravity.magnitude);
+
+        // setting vertical speed
+        Rigidbody.AddForce(transform.up * VerticalSpeed);
+        
+        VerticalSpeed = 0;
+
+    }
 }
+

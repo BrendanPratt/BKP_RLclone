@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 170018861}
   - component: {fileID: 170018866}
   - component: {fileID: 170018865}
+  - component: {fileID: 170018867}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -245,7 +246,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b4b8babc2ce644ba56a9cf225dd31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Rigidbody: {fileID: 170018867}
+  Speed: 25
+--- !u!54 &170018867
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170018860}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.5
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

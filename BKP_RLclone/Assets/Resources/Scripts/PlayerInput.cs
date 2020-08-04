@@ -26,12 +26,10 @@ public class PlayerInput : MonoBehaviour
         {
             CharacterController.MoveUp();
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.Space))
         {
             CharacterController.MoveDown();
         }
-
     }
 }
 
-// HeLlO BrEnDaN!!!!
