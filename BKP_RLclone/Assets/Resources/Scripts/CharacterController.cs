@@ -10,7 +10,7 @@ public class CharacterController : MonoBehaviour
     public void MoveForward()
     {
         transform.Translate(transform.forward * Time.deltaTime * Speed);
-        rb.AddForce(Speed, 0, 0, ForceMode.Acceleration);
+        // rb.AddForce(Speed, 0, 0, ForceMode.Acceleration);
     }
 
     public void MoveBackward()
@@ -45,10 +45,8 @@ public class CharacterController : MonoBehaviour
         
 
         // setting vertical speed
-        rb.AddForce(transform.up * VerticalSpeed);
-
+        rb.AddForce(transform.up * VerticalSpeed * Speed);
         VerticalSpeed = 0;
-
     }
 }
 
