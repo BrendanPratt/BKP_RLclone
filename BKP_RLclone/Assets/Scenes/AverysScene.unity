@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 4840157258302963866, guid: e13f847d8aae11e478703e98b4f365a8, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4840157258741743195, guid: e13f847d8aae11e478703e98b4f365a8, type: 3}
       propertyPath: m_Name
       value: GameManager
