@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        CharacterController.HaltMovement();
 
         if (Input.GetAxis("Y Axis") < -0.5)
         {

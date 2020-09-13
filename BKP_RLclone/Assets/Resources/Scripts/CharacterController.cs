@@ -8,24 +8,33 @@ public class CharacterController : MonoBehaviour
     public float Speed = 5;
     private float VerticalSpeed;
 
+    public void HaltMovement()
+    {
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+    }
+
     public void MoveForward()
     {
-        transform.Translate(transform.forward * Time.deltaTime * Speed);
+        Vector3 force = transform.forward * Speed;
+        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveBackward()
     {
-        transform.Translate(-transform.forward * Time.deltaTime * Speed);
+        Vector3 force = -transform.forward * Speed;
+        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveRight()
     {
-        transform.Translate(transform.right * Time.deltaTime * Speed);
+        Vector3 force = transform.right * Speed;
+        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveLeft()
     {
-        transform.Translate(-transform.right * Time.deltaTime * Speed);
+        Vector3 force = -transform.right * Speed;
+        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveUp()
@@ -57,6 +66,5 @@ public class CharacterController : MonoBehaviour
         rb.AddForce(transform.up * VerticalSpeed * Speed);
         VerticalSpeed = 0;
     }
-
 }
 
