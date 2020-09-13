@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class CharacterController : MonoBehaviour
     public void MoveForward()
     {
         transform.Translate(transform.forward * Time.deltaTime * Speed);
-        // rb.AddForce(Speed, 0, 0, ForceMode.Acceleration);
     }
 
     public void MoveBackward()
@@ -38,15 +38,25 @@ public class CharacterController : MonoBehaviour
         VerticalSpeed -= Time.deltaTime * Speed;
     }
 
+    public void RotateRight()
+    {
+        transform.Rotate(new Vector3(0,120*Time.deltaTime));
+    }
+
+    public void RotateLeft()
+    {
+        transform.Rotate(new Vector3(0,-120*Time.deltaTime));
+    }
+
     private void FixedUpdate()
     {
         // countering gravity
         rb.AddForce(transform.up * Physics.gravity.magnitude);
-        
 
         // setting vertical speed
         rb.AddForce(transform.up * VerticalSpeed * Speed);
         VerticalSpeed = 0;
     }
+
 }
 
