@@ -5,8 +5,11 @@ public class CharacterController : MonoBehaviour
 {
     public Rigidbody rb;
 
-    public float Speed = 5;
-    private float VerticalSpeed;
+    public float Speed;
+    private float Yspeed;
+    private float Xspeed;
+    private float Zspeed;
+
 
     public void HaltMovement()
     {
@@ -15,36 +18,40 @@ public class CharacterController : MonoBehaviour
 
     public void MoveForward()
     {
-        Vector3 force = transform.forward * Speed;
-        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
+        Zspeed += 25 * Time.deltaTime * Speed;
+        //Vector3 force = transform.forward * Speed;
+        //rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveBackward()
     {
-        Vector3 force = -transform.forward * Speed;
-        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
+        Zspeed -= 25 * Time.deltaTime * Speed;
+        //Vector3 force = -transform.forward * Speed;
+        //rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveRight()
     {
-        Vector3 force = transform.right * Speed;
-        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
+        Xspeed += 25 * Time.deltaTime * Speed;
+        //Vector3 force = transform.right * Speed;
+        //rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveLeft()
     {
-        Vector3 force = -transform.right * Speed;
-        rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
+        Xspeed -= 25 * Time.deltaTime * Speed;
+        //Vector3 force = -transform.right * Speed;
+        //rb.velocity = new Vector3(force.x, rb.velocity.y, force.z);
     }
 
     public void MoveUp()
     {
-        VerticalSpeed += Time.deltaTime * Speed;
+        Yspeed += 25 * Time.deltaTime * Speed;
     }
 
     public void MoveDown()
     {
-        VerticalSpeed -= Time.deltaTime * Speed;
+        Yspeed -= 25 * Time.deltaTime * Speed;
     }
 
     public void RotateRight()
@@ -63,8 +70,12 @@ public class CharacterController : MonoBehaviour
         rb.AddForce(transform.up * Physics.gravity.magnitude);
 
         // setting vertical speed
-        rb.AddForce(transform.up * VerticalSpeed * Speed);
-        VerticalSpeed = 0;
+        rb.AddForce(transform.right * Xspeed * Speed);
+        rb.AddForce(transform.up * Yspeed * Speed);
+        rb.AddForce(transform.forward * Zspeed * Speed);
+        Xspeed = 0;
+        Yspeed = 0;
+        Zspeed = 0;
     }
 }
 
